@@ -1,0 +1,54 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: rgb(37, 37, 37);
+    border-radius: 100%;
+    padding: 10px;
+}
+
+.azul {
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    border-radius: 100% 0 0 0;
+    background-color: blue;
+}
+
+main section {
+    transition: all .25s;
+}
+
+main section:hover {
+    transform: scale(1.1);
+}
+
+.vermelho {
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    border-radius: 0 100% 0 0;
+    background-color: red;
+}
+
+.verde {
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    border-radius: 0 0 100% 0;
+    background-color: green;
+}
+
+.amarelo {
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    border-radius: 0 0 0 100%;
+    background-color: yellow;
+}
