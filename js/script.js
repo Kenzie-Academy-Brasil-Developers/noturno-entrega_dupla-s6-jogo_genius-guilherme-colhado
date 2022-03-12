@@ -5,8 +5,8 @@ const cores = {
     amarelo: document.querySelector('.amarelo'),
     verde: document.querySelector('.verde')
 }
-let jogador = []
 let contPlayer = 1
+let jogador = []
 if (localStorage.getItem('ranking').length <= 0) {
     let rankingArr = []
     localStorage.setItem('ranking', rankingArr)
