@@ -7,8 +7,10 @@ const cores = {
 }
 let jogador = []
 let contPlayer = 1
-let rankingArr = []
-localStorage.setItem('ranking', rankingArr)
+if (localStorage.getItem('ranking').length <= 0) {
+    let rankingArr = []
+    localStorage.setItem('ranking', rankingArr)
+}
 
 function vezDoPc() {
     const randon = Math.floor(Math.random() * (5 - 1) + 1)
@@ -24,7 +26,13 @@ function vezDoPc() {
         b = Number(b.replace(/[^0-9]/g, ''))
         return a - b
     }).reverse().filter((str, index) => index < 5)
-    top5.forEach(element => {
+    top5.forEach((element, index) => {
+        if (index === 0) {
+            element = element.replace('A sua', 'A sua maior')
+        }
+        if (index === top5.length - 1) {
+            element = element.replace('A sua', 'A sua pior')
+        }
         const li = document.createElement('li')
         li.innerHTML = element
         ranking.appendChild(li)
@@ -183,8 +191,9 @@ function perdeu(pontuacao) {
         main.removeChild(div)
         vezDoPc()
     })
-    rankingArr.push(`A sua pontuação foi ${pontuacao}`)
-    localStorage.setItem('ranking', rankingArr)
+    const rankingStorage = localStorage.getItem('ranking').length > 0 ? localStorage.getItem('ranking').split(',') : []
+    rankingStorage.push(`A sua pontuação foi ${pontuacao}`)
+    localStorage.setItem('ranking', rankingStorage)
     div.appendChild(h3)
     div.appendChild(h4)
     div.appendChild(buttonReset)
